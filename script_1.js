@@ -5,6 +5,7 @@ const trainingInput = document.getElementById('training');
 const statusEl = document.getElementById('status');
 const generateBtn = document.getElementById('generateBtn');
 const downloadBtn = document.getElementById('downloadBtn');
+const imgData = canvas.toDataURL('image/jpeg', 0.7);
 
 const fontFace = new FontFace('MyDownloadedFont', 'url(ITCEDSCR.TTF)');
 document.fonts.add(fontFace);
@@ -69,13 +70,14 @@ generateBtn.addEventListener('click', () => {
     const bg = new Image();
     bg.src = 'certificate-bg.png';
     bg.onload = () => {
-        canvas.width = bg.naturalWidth;
-        canvas.height = bg.naturalHeight;
+        canvas.width = bg.naturalWidth * 0.5;
+        canvas.height = bg.naturalHeight * 0.5;
 
         const sl = `PMK-${YEAR}-${last3.padStart(3, '0')}`;
         drawCertificate(name, training, period, sl, bg);
         downloadBtn.disabled = false;
     };
+
     bg.onerror = () => {
         updateStatus('Error: certificate-bg.png not found. Make sure the file exists.');
         downloadBtn.disabled = true;
@@ -90,6 +92,6 @@ downloadBtn.addEventListener('click', () => {
         unit: "px",
         format: [canvas.width, canvas.height]
     });
-    pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+    pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width, canvas.height);
     pdf.save("certificate.pdf");
 });
