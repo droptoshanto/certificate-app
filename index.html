@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMK Certificate Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="form-box">
+        <h2>Certificate Generator</h2>
+
+        <label>Name</label>
+        <input type="text" id="name" placeholder="Enter Participant Name">
+
+        <label>Training Name</label>
+        <input style="text-transform: uppercase;" type="text" id="training" placeholder="Enter Training Name">
+
+        <label>Training Period</label>
+        <input type="text" id="period" placeholder="Example: DD JAN YYYY to DD JAN YYYY">
+
+        <label>Serial Number (Last 3 Digits)</label>
+        <input type="number" id="manualSerial" placeholder="e.g., 001" min="0" max="999">
+
+        <div class="row">
+            <button id="generateBtn">Generate Certificate</button>
+            <button id="downloadBtn">Download</button>
+        </div>
+
+        <p id="status" class="status">Loading background image...</p>
+    </div>
+
+    <!-- Canvas will be resized to match your background automatically -->
+    <canvas id="certCanvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
