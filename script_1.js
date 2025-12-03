@@ -35,7 +35,7 @@ function drawCertificate(name, training, period, sl, bgImage) {
     ctx.fillText(name || '—', canvas.width / 2, canvas.height * 0.54);
 
     ctx.fillStyle = '#414141';
-    ctx.font = `${Math.round(canvas.height * 0.035)}px "Roboto Black", sans-serif`;
+    ctx.font = `${Math.round(canvas.height * 0.035)}px "Roboto Black"`;
     ctx.fillText(training || '—', canvas.width / 2, canvas.height * 0.685);
 
     ctx.fillStyle = '#414141';
