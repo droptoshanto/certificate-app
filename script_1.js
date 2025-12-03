@@ -5,7 +5,7 @@ const trainingInput = document.getElementById('training');
 const statusEl = document.getElementById('status');
 const generateBtn = document.getElementById('generateBtn');
 const downloadBtn = document.getElementById('downloadBtn');
-const imgData = canvas.toDataURL('image/jpeg', 0.7);
+const imgData = canvas.toDataURL('image/jpeg', 0.4);
 
 const fontFace = new FontFace('MyDownloadedFont', 'url(ITCEDSCR.TTF)');
 document.fonts.add(fontFace);
@@ -86,12 +86,12 @@ generateBtn.addEventListener('click', () => {
 
 // Download button remains the same
 downloadBtn.addEventListener('click', () => {
-    const imgData = canvas.toDataURL('image/png');
+    const imgData = canvas.toDataURL('image/jpeg', 0.4);
     const pdf = new jspdf.jsPDF({
         orientation: "landscape",
         unit: "px",
         format: [canvas.width, canvas.height]
     });
-    pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width, canvas.height);
+    pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width, canvas.height, '', 'FAST');
     pdf.save("certificate.pdf");
 });
